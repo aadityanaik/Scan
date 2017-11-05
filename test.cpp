@@ -4,13 +4,13 @@
 
 int main() {
 	int x;
-	Scan input;
+	Scanner::Scan input;
 
 	while(true) {
 		try {
 			x = input.next<int>();
 			break;
-		} catch(const InvalidInputException& e) {
+		} catch(const Scanner::InvalidInputException& e) {
 			std::cout << e.what() << std::endl;
 		}
 	}
