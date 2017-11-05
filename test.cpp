@@ -8,12 +8,12 @@ int main() {
 
 	while(true) {
 		try {
-			x = input.next<double>();
+			x = input.next<int>();
 			break;
-		} catch(...) {
-			std::cout <<"Wrong input datatype" << std::endl;
+		} catch(const InvalidInputException& e) {
+			std::cout << e.what() << std::endl;
 		}
 	}
 
-	std::cout << x << std::endl;
+	std::cout << "Congratulations! You entered an integer- " << x << std::endl;
 }
