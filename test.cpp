@@ -6,6 +6,8 @@ int main() {
 	int x;
 	Scanner::Scan input;
 
+	std::cout << "Enter an integer\n";
+	
 	while(true) {
 		try {
 			x = input.next<int>();
