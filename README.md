@@ -19,4 +19,4 @@ x = input.get<int>();
 ```
 but a double is entered, the class will throw an exception.
 
-![Demo](screenshots/demo.png?raw=true "Demo")
+![Demo](screenshots/screenshot.png?raw=true "Demo")
