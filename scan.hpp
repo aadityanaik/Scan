@@ -26,7 +26,7 @@ namespace Scanner {
 		//function to set the value of a particular x
 		template<class T>
 		void set(T& x);
-		
+
 	public:
 		//function that will be used by the user
 		template<class T>
@@ -36,7 +36,7 @@ namespace Scanner {
 			return data;
 		}
 	};
-	
+
 	template<class T>
 	void Scan::set(T& x) {
 		std::cin >> x;
@@ -60,6 +60,22 @@ namespace Scanner {
 			if(dec != 0) {
 				fix();
 				throw InvalidInputException();
+			}
+		}
+	}
+
+	//next function for those who do not want to deal with the class and exception
+	//handling directly, and would prefer it done automatically
+	template<class T>
+	T next(const std::string& message = "Invalid datatype entered") {
+		Scan input;
+
+		while(true) {
+			try {
+				T data = input.next<T>();
+				return data;
+			} catch(const InvalidInputException& e) {
+				std::cerr << message << "\n";
 			}
 		}
 	}
