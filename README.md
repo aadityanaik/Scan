@@ -17,6 +17,22 @@ int x;
 
 x = input.get<int>();
 ```
-but a double is entered, the class will throw an exception.
+but a double is entered, the class will throw an exception.<br/>
+<br/>
+It is preferrable to use the Scanner::next<type>() function to avoid unnecessary try blocks-<br/>
+```
+int x;
+
+x = Scanner::next<int>("Integer expected");
+// This gives "Integer expected" as the error message and
+// keeps accepting inputs till it encounters an integer
+
+x = Scanner::next<int>();
+// This prints out the default message "Invalid datatype entered" as the error
+
+// All error messages are printed to stderr
+```
+<br/>
+<br/>
 
 ![Demo](screenshots/screenshot.png?raw=true "Demo")
