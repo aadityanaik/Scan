@@ -7,15 +7,8 @@ int main() {
 	Scanner::Scan input;
 
 	std::cout << "Enter an integer\n";
-	
-	while(true) {
-		try {
-			x = input.next<int>();
-			break;
-		} catch(const Scanner::InvalidInputException& e) {
-			std::cout << e.what() << std::endl;
-		}
-	}
 
+	x = Scanner::next<int>("Integer expected");
+	
 	std::cout << "Congratulations! You entered an integer- " << x << std::endl;
 }
