@@ -9,6 +9,6 @@ int main() {
 	std::cout << "Enter an integer\n";
 
 	x = Scanner::next<int>("Integer expected");
-	
+
 	std::cout << "Congratulations! You entered an integer- " << x << std::endl;
 }
