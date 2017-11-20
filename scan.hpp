@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <exception>
+#include <cctype>
 
 namespace Scanner {
 
@@ -17,6 +18,11 @@ namespace Scanner {
 	//an adaptation of cin to make accepting input less hectic
 	class Scan {
 	private:
+		// function to check if next char input is actually char or int
+		bool isNextChar() {
+			return (std::cin.peek() >= 33 && std::cin.peek() <= 126);
+		}
+
 		//function to clear the buffer stream
 		void fix() {
 			std::cin.clear();
@@ -36,6 +42,10 @@ namespace Scanner {
 			return data;
 		}
 	};
+
+	/*************************************************************************************************
+	 * Definition of functions in class Scanner
+	 *************************************************************************************************/
 
 	template<class T>
 	void Scan::set(T& x) {
@@ -61,11 +71,44 @@ namespace Scanner {
 				fix();
 				throw InvalidInputException();
 			}
+		} else if(!std::isspace(std::cin.peek())) {
+			// taking care of any integer followed by a character
+			// like so- 123424agger
+			// the above should fail the test for ints
+			// so check if next character after int is anything but whitespace
+
+			fix();
+			throw InvalidInputException();
 		}
 	}
 
-	//next function for those who do not want to deal with the class and exception
-	//handling directly, and would prefer it done automatically
+	template<>
+	void Scan::set(double& x) {
+		// separate function definition for double to incorporate a similar test to resolve issues like
+		// 11.23agger
+
+		std::cin >> x;
+		if(std::cin.fail()) {
+			fix();
+			throw InvalidInputException();
+		} else if(!std::isspace(std::cin.peek())) {
+			fix();
+			throw InvalidInputException();
+		}
+	}
+
+
+
+
+
+
+
+	/*************************************************************************************************
+	 * next function for those who do not want to deal with the class and exception
+	 * handling directly, and would prefer it done automatically
+	 *************************************************************************************************/
+
+
 	template<class T>
 	T next(const std::string& message = "Invalid datatype entered") {
 		Scan input;
