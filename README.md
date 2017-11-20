@@ -17,7 +17,7 @@ int x;
 
 x = input.get<int>();
 ```
-but a double is entered, the class will throw an exception.<br/>
+but a double is entered, the class will throw an exception. The same applies for the Scanner::next<type>() function.<br/>
 <br/>
 It is preferrable to use the Scanner::next<type>() function to avoid unnecessary try blocks-<br/>
 ```
