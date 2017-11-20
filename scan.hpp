@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <exception>
+#include <limits>
 #include <cctype>
 
 namespace Scanner {
@@ -26,7 +27,7 @@ namespace Scanner {
 		//function to clear the buffer stream
 		void fix() {
 			std::cin.clear();
-			std::cin.ignore(32767, '\n');
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 
 		//function to set the value of a particular x
