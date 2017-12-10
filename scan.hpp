@@ -4,9 +4,8 @@
 #include <iostream>
 #include <exception>
 #include <limits>
-#include <cctype>
 
-namespace Scanner {
+namespace scanner {
 
 	//custom exception
 	class InvalidInputException : public std::exception {
@@ -122,6 +121,17 @@ namespace Scanner {
 				std::cerr << message << "\n";
 			}
 		}
+	}
+
+
+	//If the user wants to accept an entire line
+
+	std::string nextLine() {
+		std::string data;
+		std::cin.ignore();
+		std::getline(std::cin, data);
+
+		return data;
 	}
 }
 
